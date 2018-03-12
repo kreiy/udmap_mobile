@@ -98,6 +98,14 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".TimeLineActivity" >
+            <intent-filter>
+                <action android:name="com.example.yasmina.udmapp.TimeLineActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
 
     </application>
 

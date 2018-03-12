@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/timelineview/timelineview.iml" filepath="$PROJECT_DIR$/timelineview/timelineview.iml" />
       <module fileurl="file://$PROJECT_DIR$/udmap_final.iml" filepath="$PROJECT_DIR$/udmap_final.iml" />
     </modules>
   </component>

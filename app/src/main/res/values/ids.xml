@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="verticalTimeLineButton" type="id" />
+    <item name="horizontalTimeLineButton" type="id" />
+    <item name="horizontalTimeLineButtonWPadding" type="id" />
+</resources>
