@@ -9,12 +9,21 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.MenuItem;
 
 import com.example.yasmina.udmap_final.R;
 import com.example.yasmina.udmap_final.model.OrderStatus;
 import com.example.yasmina.udmap_final.model.Orientation;
 import com.example.yasmina.udmap_final.model.TimeLineModel;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseException;
+import com.google.firebase.database.ValueEventListener;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +34,7 @@ import java.util.List;
 public class TimeLineActivity extends AppCompatActivity {
 
     private RecyclerView mRecyclerView;
+    private final DatabaseReference newsDatabaseReference = FirebaseDatabase.getInstance().getReference().child("/news/general");;
     private TimeLineAdpter mTimeLineAdapter;
     private List<TimeLineModel> mDataList = new ArrayList<>();
     private Orientation mOrientation;
@@ -38,6 +48,8 @@ public class TimeLineActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+
         if(getSupportActionBar()!=null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
@@ -50,6 +62,22 @@ public class TimeLineActivity extends AppCompatActivity {
         mRecyclerView.setLayoutManager(getLinearLayoutManager());
         mRecyclerView.setHasFixedSize(true);
 
+        newsDatabaseReference.addValueEventListener(new ValueEventListener(){
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot){
+                        mDataList.clear();
+                        for(DataSnapshot child : snapshot.getChildren()) {
+                            mDataList.add(child.getValue(TimeLineModel.class));
+                        }
+                        mTimeLineAdapter.notifyDataSetChanged();
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError error){
+
+                    }
+                }
+        );
         initView();
     }
 
@@ -62,21 +90,8 @@ public class TimeLineActivity extends AppCompatActivity {
     }
 
     private void initView() {
-        setDataListItems();
         mTimeLineAdapter = new TimeLineAdpter(mDataList, mOrientation, mWithLinePadding);
         mRecyclerView.setAdapter(mTimeLineAdapter);
-    }
-
-    private void setDataListItems(){
-        mDataList.add(new TimeLineModel("Item successfully delivered", "", OrderStatus.INACTIVE));
-        mDataList.add(new TimeLineModel("Courier is out to delivery your order", "2017-02-12 08:00", OrderStatus.ACTIVE));
-        mDataList.add(new TimeLineModel("Item has reached courier facility at New Delhi", "2017-02-11 21:00", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Item has been given to the courier", "2017-02-11 18:00", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Item is packed and will dispatch soon", "2017-02-11 09:30", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Order is being readied for dispatch", "2017-02-11 08:00", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Order processing initiated", "2017-02-10 15:00", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Order confirmed by seller", "2017-02-10 14:30", OrderStatus.COMPLETED));
-        mDataList.add(new TimeLineModel("Order placed successfully", "2017-02-10 14:00", OrderStatus.COMPLETED));
     }
 
     @Override
@@ -107,4 +122,6 @@ public class TimeLineActivity extends AppCompatActivity {
         }
         super.onRestoreInstanceState(savedInstanceState);
     }
+
+
 }

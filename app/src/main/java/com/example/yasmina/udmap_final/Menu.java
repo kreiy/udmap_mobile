@@ -137,7 +137,7 @@ public class Menu extends AppCompatActivity {
                                     int position, long id){
 
                 if (position == 0) {
-                    Intent myIntent = new Intent(view.getContext(),HoraireActivity.class);
+                    Intent myIntent = new Intent(view.getContext(),EmploiDuTemps.class);
                     startActivityForResult(myIntent, 0);
                 }
 
@@ -158,7 +158,7 @@ public class Menu extends AppCompatActivity {
                 }
 
                 if (position == 4) {
-                    Intent myIntent = new Intent(view.getContext(), ListItemActivity5.class);
+                    Intent myIntent = new Intent(view.getContext(), ContactActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
 

@@ -11,6 +11,8 @@
     android:paddingBottom="10dp"
     android:gravity="center"
     android:background="@drawable/bottom_border_on_dark">
+
+
     <TextView
         android:id="@+id/headingTxt"
         android:layout_width="wrap_content"
@@ -21,6 +23,7 @@
         android:textSize="16dp"
         android:typeface="sans"
         android:textStyle="bold"/>
+
     <View
         android:layout_width="0dp"
         android:layout_height="1dp"
@@ -35,5 +38,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:src="@drawable/ic_keyboard_arrow_down"/>
+
     </LinearLayout>
 </LinearLayout>
+

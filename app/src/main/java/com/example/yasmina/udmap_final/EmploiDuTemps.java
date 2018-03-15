@@ -1,35 +1,56 @@
 package com.example.yasmina.udmap_final;
 
+/**
+ * Created by yasmina on 14/03/18.
+ */
+
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.R.drawable;
 import android.view.MenuItem;
-import android.widget.TableLayout;
 
 import com.example.yasmina.udmap_final.model.Orientation;
+import com.mindorks.placeholderview.ExpandablePlaceHolderView;
 
+public class EmploiDuTemps extends AppCompatActivity {
 
-public class ListItemActivity2 extends AppCompatActivity {
-
+    private ExpandablePlaceHolderView mExpandableView;
+    private Context mContext;
     private Orientation mOrientation;
     private boolean mWithLinePadding;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listitem2_activity);
-        TableLayout tl = (TableLayout) findViewById(R.id.tl);
+        setContentView(R.layout.emploi_du_temps);
+        mContext = this.getApplicationContext();
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(mToolbar);
+        // mToolbar.setTitle(getString(R.string.Horaire));
+
+         setSupportActionBar(mToolbar);
         mOrientation = (Orientation) getIntent().getSerializableExtra(ListItemActivity3.EXTRA_ORIENTATION);
         mWithLinePadding = getIntent().getBooleanExtra(ListItemActivity3.EXTRA_WITH_LINE_PADDING, false);
 
-        if (getSupportActionBar() != null)
+        if(getSupportActionBar()!=null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        setTitle(mOrientation == Orientation.HORIZONTAL ? getResources().getString(R.string.horizontal_timeline) : getResources().getString(R.string.note));
+        setTitle(mOrientation == Orientation.HORIZONTAL ? getResources().getString(R.string.horizontal_timeline) : getResources().getString(R.string.Horaire));
+
+
+
+        mExpandableView = (ExpandablePlaceHolderView) findViewById(R.id.expandableView);
+        for (Feed feed : Utils.loadFeeds(this.getApplicationContext())) {
+            mExpandableView.addView(new HeadingView(mContext, feed.getHeading()));
+            for (Info info : feed.getInfoList()) {
+                mExpandableView.addView(new InfoView(mContext, info));
+            }
+        }
     }
+
 
 
     private LinearLayoutManager getLinearLayoutManager() {
@@ -39,6 +60,7 @@ public class ListItemActivity2 extends AppCompatActivity {
             return new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         }
     }
+
 
 
     @Override
@@ -55,7 +77,7 @@ public class ListItemActivity2 extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
-        if (mOrientation != null)
+        if(mOrientation!=null)
             savedInstanceState.putSerializable(ListItemActivity3.EXTRA_ORIENTATION, mOrientation);
         super.onSaveInstanceState(savedInstanceState);
     }

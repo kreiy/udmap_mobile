@@ -1,35 +1,47 @@
 package com.example.yasmina.udmap_final;
 
+/**
+ * Created by yasmina on 15/03/18.
+ */
+
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
+import android.R.drawable;
 import android.view.MenuItem;
-import android.widget.TableLayout;
 
 import com.example.yasmina.udmap_final.model.Orientation;
+import com.mindorks.placeholderview.ExpandablePlaceHolderView;
 
+public class ContactActivity extends AppCompatActivity {
 
-public class ListItemActivity2 extends AppCompatActivity {
-
+    private ExpandablePlaceHolderView mExpandableView;
+    private Context mContext;
     private Orientation mOrientation;
     private boolean mWithLinePadding;
 
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.listitem2_activity);
-        TableLayout tl = (TableLayout) findViewById(R.id.tl);
+        setContentView(R.layout.contact_activity);
+        mContext = this.getApplicationContext();
 
         Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar);
+        // mToolbar.setTitle(getString(R.string.Horaire));
+
         setSupportActionBar(mToolbar);
         mOrientation = (Orientation) getIntent().getSerializableExtra(ListItemActivity3.EXTRA_ORIENTATION);
         mWithLinePadding = getIntent().getBooleanExtra(ListItemActivity3.EXTRA_WITH_LINE_PADDING, false);
 
-        if (getSupportActionBar() != null)
+        if(getSupportActionBar()!=null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        setTitle(mOrientation == Orientation.HORIZONTAL ? getResources().getString(R.string.horizontal_timeline) : getResources().getString(R.string.note));
+        setTitle(mOrientation == Orientation.HORIZONTAL ? getResources().getString(R.string.horizontal_timeline) : getResources().getString(R.string.contact));
+
     }
+
 
 
     private LinearLayoutManager getLinearLayoutManager() {
@@ -55,7 +67,7 @@ public class ListItemActivity2 extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
-        if (mOrientation != null)
+        if(mOrientation!=null)
             savedInstanceState.putSerializable(ListItemActivity3.EXTRA_ORIENTATION, mOrientation);
         super.onSaveInstanceState(savedInstanceState);
     }
@@ -69,5 +81,6 @@ public class ListItemActivity2 extends AppCompatActivity {
         }
         super.onRestoreInstanceState(savedInstanceState);
     }
+
 
 }

@@ -106,6 +106,21 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".EmploiDuTemps" >
+            <intent-filter>
+                <action android:name="com.example.yasmina.udmapp.EmploiDuTemps" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".ContactActivity" >
+            <intent-filter>
+                <action android:name="com.example.yasmina.udmapp.EmploiDuTemps" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 
