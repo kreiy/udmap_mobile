@@ -60,7 +60,7 @@ public class Menu extends AppCompatActivity {
     private boolean shouldLoadHomeFragOnBackPress = true;
     private Handler mHandler;
 
-    String [] itemsValue = new String[]{"emploi du temps","gestion des notes","actualites","map","coordonnees",};
+    String [] itemsValue = new String[]{"emploi du temps","gestion des notes","actualites","chat","contact",};
     int[] listviewImage = new int[]{
             R.drawable.cours, R.drawable.note, R.drawable.news,R.drawable.map, R.drawable.coord
     };
