@@ -9,7 +9,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.example.yasmina.udmap_final.chat.MainActivityChat">
+    android:background="#1d4851">
 
     <android.support.design.widget.FloatingActionButton
         android:layout_width="wrap_content"
@@ -30,10 +30,11 @@
         android:layout_alignParentStart="true">
 
         <EditText
-            android:id="@+id/input"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Input"
+            android:hint="entrer le text"
+            android:textColorHint="@color/white"
+            android:id="@+id/input"
             />
     </android.support.design.widget.TextInputLayout>
 
