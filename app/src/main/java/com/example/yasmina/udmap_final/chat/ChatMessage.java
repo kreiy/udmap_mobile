@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap_final;
+package com.example.yasmina.udmap_final.chat;
 import java.util.Date;
 
 /**
@@ -22,6 +22,7 @@ public class ChatMessage {
     }
 
     public String getMessageText() {
+
         return messageText;
     }
 

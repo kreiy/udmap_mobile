@@ -20,10 +20,9 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
+import com.example.yasmina.udmap_final.chat.MainActivityChat;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -153,7 +152,7 @@ public class Menu extends AppCompatActivity {
                 }
 
                 if (position == 3) {
-                    Intent myIntent = new Intent(view.getContext(), ListItemActivity4.class);
+                    Intent myIntent = new Intent(view.getContext(), MainActivityChat.class);
                     startActivityForResult(myIntent, 0);
                 }
 
