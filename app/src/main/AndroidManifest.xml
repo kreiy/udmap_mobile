@@ -97,37 +97,46 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".TimeLineActivity" >
+        <activity android:name=".TimeLineActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.TimeLineActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".EmploiDuTemps" >
+        <activity android:name=".EmploiDuTemps">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.EmploiDuTemps" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".ContactActivity" >
+        <activity android:name=".ContactActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.EmploiDuTemps" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AboutUsActivity" >
+        <activity android:name=".AboutUsActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.AboutUsActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".ActivityChat">
+        <intent-filter>
+            <action android:name="com.example.yasmina.udmapp.ActivityChat" />
+
+            <category android:name="android.intent.category.DEFAULT" />
+        </intent-filter>
+    </activity>
+
+
+        <activity
+            android:name=".settings.SettingsActivity"
+            android:label="@string/title_activity_settings"></activity>
     </application>
 
 </manifest>

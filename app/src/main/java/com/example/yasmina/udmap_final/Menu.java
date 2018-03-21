@@ -1,6 +1,7 @@
 package com.example.yasmina.udmap_final;
 
 import android.content.Intent;
+import android.media.audiofx.BassBoost;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.FloatingActionButton;
@@ -23,6 +24,8 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.yasmina.udmap_final.chat.MainActivityChat;
+import com.example.yasmina.udmap_final.settings.SettingsActivity;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -152,7 +155,7 @@ public class Menu extends AppCompatActivity {
                 }
 
                 if (position == 3) {
-                    Intent myIntent = new Intent(view.getContext(), MainActivityChat.class);
+                    Intent myIntent = new Intent(view.getContext(), ActivityChat.class);
                     startActivityForResult(myIntent, 0);
                 }
 
@@ -309,7 +312,11 @@ public class Menu extends AppCompatActivity {
                     case R.id.nav_settings:
                         navItemIndex = 2;
                         CURRENT_TAG = TAG_SETTINGS;
-                        break;
+                        startActivity(new Intent(Menu.this, SettingsActivity.class));
+                        drawer.closeDrawers();
+                        return true;
+
+
                     case R.id.nav_about_us:
                         // launch new intent instead of loading fragment
                         startActivity(new Intent(Menu.this, AboutUsActivity.class));

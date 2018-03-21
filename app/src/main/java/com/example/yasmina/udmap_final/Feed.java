@@ -15,7 +15,7 @@ public class Feed {
     @Expose
     private String heading;
 
-    @SerializedName("data")
+    @SerializedName("arrays")
     @Expose
     private List<Info> infoList;
 
