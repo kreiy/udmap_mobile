@@ -295,11 +295,17 @@ public class Menu extends AppCompatActivity {
                     case R.id.nav_home:
                         navItemIndex = 0;
                         CURRENT_TAG = TAG_HOME;
-                        break;
+                        startActivity(new Intent(Menu.this,Menu.class));
+                        drawer.closeDrawers();
+                        return true;
+
                     case R.id.nav_notifications:
                         navItemIndex = 1;
                         CURRENT_TAG = TAG_NOTIFICATIONS;
-                        break;
+                        startActivity(new Intent(Menu.this, AboutUsActivity.class));
+                        drawer.closeDrawers();
+                        return true;
+
                     case R.id.nav_settings:
                         navItemIndex = 2;
                         CURRENT_TAG = TAG_SETTINGS;

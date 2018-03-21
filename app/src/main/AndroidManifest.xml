@@ -121,7 +121,13 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name=".AboutUsActivity" >
+            <intent-filter>
+                <action android:name="com.example.yasmina.udmapp.AboutUsActivity" />
 
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
