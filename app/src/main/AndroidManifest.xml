@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.yasmina.udmap_final">
+    package="com.example.yasmina.udmap">
 
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -13,84 +13,84 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashScreenActivity">
+        <activity android:name="com.example.yasmina.udmap.SplashScreenActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name="com.example.yasmina.udmap.LoginActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.LoginActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".MainActivity">
+        <activity android:name="com.example.yasmina.udmap.MainActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.MainActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".SignupActivity">
+        <activity android:name="com.example.yasmina.udmap.SignupActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.SignupActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ResetPasswordActivity">
+        <activity android:name="com.example.yasmina.udmap.ResetPasswordActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.ResetPasswordActivitys" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".Menu">
+        <activity android:name="com.example.yasmina.udmap.Menu">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.Menu" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".HoraireActivity">
+        <activity android:name="com.example.yasmina.udmap.HoraireActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.HoraireActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListItemActivity1">
+        <activity android:name="com.example.yasmina.udmap.ListItemActivity1">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.ListItemActivity1" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListItemActivity2">
+        <activity android:name="com.example.yasmina.udmap.ListItemActivity2">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.ListItemActivity2" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListItemActivity3">
+        <activity android:name="com.example.yasmina.udmap.ListItemActivity3">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.ListItemActivity3" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".chat.MainActivityChat">
+        <activity android:name="com.example.yasmina.udmap.chat.MainActivityChat">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.ListItemActivity4" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListItemActivity5">
+        <activity android:name="com.example.yasmina.udmap.ListItemActivity5">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.ListItemActivity5" />
 
@@ -104,28 +104,28 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".EmploiDuTemps">
+        <activity android:name="com.example.yasmina.udmap.EmploiDuTemps">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.EmploiDuTemps" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ContactActivity">
+        <activity android:name="com.example.yasmina.udmap.ContactActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.EmploiDuTemps" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".AboutUsActivity">
+        <activity android:name="com.example.yasmina.udmap.AboutUsActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.AboutUsActivity" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityChat">
+        <activity android:name="com.example.yasmina.udmap.ActivityChat">
         <intent-filter>
             <action android:name="com.example.yasmina.udmapp.ActivityChat" />
 
@@ -135,7 +135,7 @@
 
 
         <activity
-            android:name=".settings.SettingsActivity"
+            android:name="com.example.yasmina.udmap.settings.SettingsActivity"
             android:label="@string/title_activity_settings"></activity>
     </application>
 
