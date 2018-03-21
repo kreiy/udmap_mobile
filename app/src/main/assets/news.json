@@ -3,19 +3,16 @@
     "data" : [
       {
         "title" : "PM",
-        "image_url" : "com.example.yasmina.udmap_final.R.drawable.cours",
         "caption" : "RK",
         "time" : "9h - 10h30"
       },
       {
         "title" : "CSW",
-        "image_url" : "",
         "caption" : "ST",
         "time" : "10h45 - 12h30"
       },
       {
         "title" : "BD",
-        "image_url" : "",
         "caption" : "SD",
         "time" : "13h - 14h30"
       }
@@ -26,19 +23,16 @@
     "data" : [
       {
         "title" : "PM",
-        "image_url" : "",
         "caption" : "RK",
         "time" : "9h - 10h30"
       },
       {
         "title" : "CSW",
-        "image_url" : "",
         "caption" : "ST",
         "time" : "10h45 - 12h30"
       },
       {
         "title" : "BD",
-        "image_url" : "",
         "caption" : "SD",
         "time" : "13h - 14h30"
       }
@@ -49,19 +43,16 @@
     "data" : [
       {
         "title" : "PM",
-        "image_url" : "",
         "caption" : "RK",
         "time" : "9h - 10h30"
       },
       {
         "title" : "CSW",
-        "image_url" : "",
         "caption" : "ST",
         "time" : "10h45 - 12h30"
       },
       {
         "title" : "BD",
-        "image_url" : "",
         "caption" : "SD",
         "time" : "13h - 14h30"
       }
@@ -72,19 +63,16 @@
     "data" : [
       {
         "title" : "PM",
-        "image_url" : "",
         "caption" : "RK",
         "time" : "9h - 10h30"
       },
       {
         "title" : "CSW",
-        "image_url" : "",
         "caption" : "ST",
         "time" : "10h45 - 12h30"
       },
       {
         "title" : "BD",
-        "image_url" : "",
         "caption" : "SD",
         "time" : "13h - 14h30"
       }
@@ -96,19 +84,16 @@
     "data" : [
       {
         "title" : "PM",
-        "image_url" : "",
         "caption" : "RK",
         "time" : "9h - 10h30"
       },
       {
         "title" : "CSW",
-        "image_url" : "",
         "caption" : "ST",
         "time" : "10h45 - 12h30"
       },
       {
         "title" : "BD",
-        "image_url" : "",
         "caption" : "SD",
         "time" : "13h - 14h30"
       }

@@ -13,10 +13,6 @@ public class Info {
     @Expose
     private String title;
 
-    @SerializedName("image_url")
-    @Expose
-    private String imageUrl;
-
     @SerializedName("caption")
     @Expose
     private String caption;
@@ -31,14 +27,6 @@ public class Info {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getImageUrl() {
-        return imageUrl;
-    }
-
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
     }
 
     public String getCaption() {

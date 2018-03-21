@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">udmap_final</string>
+    <string name="app_name">UDM mobile</string>
 
     <string name="action_sign_in_short">Register</string>
     <string name="email">Email</string>
