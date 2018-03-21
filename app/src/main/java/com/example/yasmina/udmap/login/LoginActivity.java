@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap;
+package com.example.yasmina.udmap.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,11 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import com.example.yasmina.udmap.Menu;
+import com.example.yasmina.udmap.R;
+import com.example.yasmina.udmap.ResetPasswordActivity;
+import com.example.yasmina.udmap.backend.BackendService;
+import com.example.yasmina.udmap.signup.SignupActivity;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -19,27 +24,16 @@ import com.google.firebase.auth.FirebaseAuth;
 public class LoginActivity extends AppCompatActivity {
 
     private EditText inputEmail, inputPassword;
-    private FirebaseAuth auth;
     private ProgressBar progressBar;
     private Button btnSignup, btnLogin, btnReset;
+    private BackendService backendService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        //Get Firebase auth instance
-        /*auth = FirebaseAuth.getInstance();
-
-        if (auth.getCurrentUser() != null) {
-            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-            finish();
-        }*/
-
+        backendService = BackendService.getInstance();
         // set the view now
         setContentView(R.layout.activity_login);
-
-       /* Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);*/
 
         inputEmail = (EditText) findViewById(R.id.email);
         inputPassword = (EditText) findViewById(R.id.password);
@@ -47,9 +41,6 @@ public class LoginActivity extends AppCompatActivity {
         btnSignup = (Button) findViewById(R.id.btn_signup);
         btnLogin = (Button) findViewById(R.id.btn_login);
         btnReset = (Button) findViewById(R.id.btn_reset_password);
-
-        //Get Firebase auth instance
-        auth = FirebaseAuth.getInstance();
 
         btnSignup.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +74,30 @@ public class LoginActivity extends AppCompatActivity {
 
                 progressBar.setVisibility(View.VISIBLE);
 
+
+                backendService.singInUser(email, password, new SingInHandler() {
+                    @Override
+                    public void success() {
+                        progressBar.setVisibility(View.GONE);
+                        Intent intent = new Intent(LoginActivity.this, Menu.class);
+                        startActivity(intent);
+                        finish();
+                    }
+
+                    @Override
+                    public void failed() {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
+                    }
+
+                    @Override
+                    public void emailNotVerified() {
+                        progressBar.setVisibility(View.GONE);
+                        Toast.makeText(LoginActivity.this, getString(R.string.auth_email_not_verified), Toast.LENGTH_LONG).show();
+                    }
+                });
+
+/*
                 //authenticate user
                 auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener(LoginActivity.this, new OnCompleteListener<AuthResult>() {
@@ -106,6 +121,7 @@ public class LoginActivity extends AppCompatActivity {
                                 }
                             }
                         });
+                        //*/
             }
         });
     }

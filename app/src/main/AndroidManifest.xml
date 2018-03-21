@@ -20,7 +20,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.yasmina.udmap.LoginActivity">
+        <activity android:name="com.example.yasmina.udmap.login.LoginActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.LoginActivity" />
 
@@ -34,7 +34,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.yasmina.udmap.SignupActivity">
+        <activity android:name="com.example.yasmina.udmap.signup.SignupActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.SignupActivity" />
 
