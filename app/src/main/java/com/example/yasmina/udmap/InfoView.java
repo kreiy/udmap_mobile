@@ -49,6 +49,6 @@ public class InfoView {
         titleTxt.setText(mInfo.getTitle());
         captionTxt.setText(mInfo.getCaption());
         timeTxt.setText(mInfo.getTime());
-        Glide.with(mContext).load(mInfo.getImageUrl()).into(imageView);
+        //Glide.with(mContext).load(mInfo.getImageUrl()).into(imageView);
     }
 }
