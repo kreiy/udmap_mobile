@@ -11,18 +11,44 @@
     tools:context="com.example.yasmina.udmap.ListItemActivity3"
     tools:showIn="@layout/activity_main">
 
-    <Button
 
+    <Button
         android:layout_width="match_parent"
         android:layout_height="60dp"
-        android:id="@+id/verticalTimeLineButton"
+        android:id="@+id/btn1"
         android:layout_marginTop="30dp"
-        android:text="news"
-        android:padding="20dp"
+        android:text="actualites generales"
         android:textSize="16sp"
         android:textAllCaps="false" />
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/btn2"
+        android:layout_marginTop="10dp"
+        android:text="actualites par departement"
+        android:textSize="16sp"
+        android:textAllCaps="false"/>
 
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/btn3"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="actualites par filieres"
+        android:textSize="16sp"
+        android:textAllCaps="false" />
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:id="@+id/btn4"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="actualite par classe"
+        android:textSize="16sp"
+        android:textAllCaps="false"/>
 
 
 </LinearLayout>

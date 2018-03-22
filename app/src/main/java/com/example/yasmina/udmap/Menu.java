@@ -23,7 +23,9 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.yasmina.udmap.settings.SettingsActivity;
+import com.example.yasmina.udmap.note.NoteActivity;
 import com.example.yasmina.udmap.timetable.EmploiDuTempsActivity;
+
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -144,7 +146,7 @@ public class Menu extends AppCompatActivity {
 
 
                 if (position == 1) {
-                    Intent myIntent = new Intent(view.getContext(), ListItemActivity2.class);
+                    Intent myIntent = new Intent(view.getContext(), NoteActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
 
