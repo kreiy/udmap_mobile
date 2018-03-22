@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap.note;
+package com.example.yasmina.udmap.notes;
 
 import com.example.yasmina.udmap.signup.Student;
 

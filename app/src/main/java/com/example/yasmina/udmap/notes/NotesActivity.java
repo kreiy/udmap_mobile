@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap.note;
+package com.example.yasmina.udmap.notes;
 
 /**
  * Created by yasmina on 14/03/18.
@@ -15,16 +15,11 @@ import com.example.yasmina.udmap.R;
 import com.example.yasmina.udmap.backend.BackendService;
 import com.example.yasmina.udmap.model.Orientation;
 import com.example.yasmina.udmap.news.NewsMenuActivity;
-import com.example.yasmina.udmap.timetable.*;
-import com.example.yasmina.udmap.timetable.Feed;
-import com.example.yasmina.udmap.timetable.HeadingView;
-import com.example.yasmina.udmap.timetable.Info;
-import com.example.yasmina.udmap.timetable.InfoView;
 import com.mindorks.placeholderview.ExpandablePlaceHolderView;
 
 import java.util.List;
 
-public class NoteActivity extends AppCompatActivity {
+public class NotesActivity extends AppCompatActivity {
 
     private ExpandablePlaceHolderView mExpandableView;
     private Context mContext;
@@ -51,25 +46,23 @@ public class NoteActivity extends AppCompatActivity {
 
         setTitle(mOrientation == Orientation.HORIZONTAL ? getResources().getString(R.string.horizontal_timeline) : getResources().getString(R.string.note));
 
-
-
         mExpandableView = (ExpandablePlaceHolderView) findViewById(R.id.expandableView);
 
-        backendService.getTimeTable(new com.example.yasmina.udmap.timetable.GetTimeTableHandler<List<com.example.yasmina.udmap.timetable.Feed>>() {
+        backendService.getStudentNotes(new GetStudentNotesHandler<List<Semester>>() {
             @Override
-            public void timetableExists(final List<com.example.yasmina.udmap.timetable.Feed> timetable) {
+            public void notesAvailable(final List<Semester> notes) {
 
-                for (Feed feed : timetable) {
-                    mExpandableView.addView(new HeadingView(mContext, feed.getHeading()));
-                    for (Info info : feed.getInfoList()) {
-                        mExpandableView.addView(new InfoView(mContext, info));
+                for (Semester semester : notes) {
+                    mExpandableView.addView(new HeadingView(mContext, semester.getHeading()));
+                    for (Note note : semester.getNotes()) {
+                        mExpandableView.addView(new InfoView(mContext, note));
                         mExpandableView.destroyDrawingCache();
                     }
                 }
             }
 
             @Override
-            public void timetableDoesNotExists() {
+            public void notesNotExist() {
 
             }
         });

@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap.note;
+package com.example.yasmina.udmap.notes;
 
 import android.content.Context;
 import android.widget.ImageView;
@@ -36,10 +36,10 @@ public class InfoView {
     @View(R.id.imageView)
     private ImageView imageView;
 
-    private Info mInfo;
+    private Note mInfo;
     private Context mContext;
 
-    public InfoView(Context context, Info info) {
+    public InfoView(Context context, Note info) {
         mContext = context;
         mInfo = info;
     }
@@ -48,6 +48,6 @@ public class InfoView {
     private void onResolved() {
         titleTxt.setText(mInfo.getTitle());
         captionTxt.setText(mInfo.getCaption());
-        timeTxt.setText(mInfo.getTime());
+        timeTxt.setText(mInfo.getMarks().toString());
     }
 }

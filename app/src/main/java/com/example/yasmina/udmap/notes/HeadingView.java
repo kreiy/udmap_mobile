@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap.note;
+package com.example.yasmina.udmap.notes;
 
 import android.content.Context;
 import android.widget.ImageView;

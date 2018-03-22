@@ -25,7 +25,7 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.yasmina.udmap.login.LoginActivity;
 import com.example.yasmina.udmap.news.NewsMenuActivity;
 import com.example.yasmina.udmap.settings.SettingsActivity;
-import com.example.yasmina.udmap.note.NoteActivity;
+import com.example.yasmina.udmap.notes.NotesActivity;
 import com.example.yasmina.udmap.timetable.EmploiDuTempsActivity;
 
 
@@ -148,7 +148,7 @@ public class Menu extends AppCompatActivity {
 
 
                 if (position == 1) {
-                    Intent myIntent = new Intent(view.getContext(), NoteActivity.class);
+                    Intent myIntent = new Intent(view.getContext(), NotesActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
 

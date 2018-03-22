@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap.note;
+package com.example.yasmina.udmap.notes;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
@@ -7,19 +7,13 @@ import com.google.gson.annotations.SerializedName;
  * Created by yasmina on 12/03/18.
  */
 
-public class Info {
+public class Note {
 
-    @SerializedName("title")
-    @Expose
     private String title;
 
-    @SerializedName("caption")
-    @Expose
     private String caption;
 
-    @SerializedName("time")
-    @Expose
-    private String time;
+    private Double marks;
 
     public String getTitle() {
         return title;
@@ -37,11 +31,11 @@ public class Info {
         this.caption = caption;
     }
 
-    public String getTime() {
-        return time;
+    public Double getMarks() {
+        return marks;
     }
 
-    public void setTime(String time) {
-        this.time = time;
+    public void setMarks(Double marks) {
+        this.marks = marks;
     }
 }

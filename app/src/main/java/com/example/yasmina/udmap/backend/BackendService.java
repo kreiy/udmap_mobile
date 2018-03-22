@@ -6,6 +6,9 @@ import com.example.yasmina.udmap.login.SingInHandler;
 import com.example.yasmina.udmap.model.TimeLineModel;
 import com.example.yasmina.udmap.news.NewsHandler;
 import com.example.yasmina.udmap.news.Category;
+import com.example.yasmina.udmap.notes.GetStudentNotesHandler;
+import com.example.yasmina.udmap.notes.Note;
+import com.example.yasmina.udmap.notes.Semester;
 import com.example.yasmina.udmap.signup.CheckStudentHandler;
 import com.example.yasmina.udmap.signup.RegistrationHandler;
 import com.example.yasmina.udmap.signup.Student;
@@ -38,12 +41,14 @@ public final class BackendService {
     private static final DatabaseReference newsDatabaseRef;
     private static final DatabaseReference studentsRef;
     private static final DatabaseReference timetableRef;
+    private static final DatabaseReference notesRef;
     private static final   FirebaseAuth auth = FirebaseAuth.getInstance();
 
     static {
         newsDatabaseRef = database.child("/news");
         studentsRef = database.child("/students");
         timetableRef = database.child("/timetables");
+        notesRef = database.child("/notes");
     }
 
     private BackendService() {}
@@ -74,7 +79,7 @@ public final class BackendService {
 
             @Override
             public void studentDoesNotExists() {
-
+                handler.onError("user does not exists!");
             }
         });
     }
@@ -110,21 +115,25 @@ public final class BackendService {
         });
     }
 
+    public void getStudentNotes(final GetStudentNotesHandler<List<Semester>> handler){
+        getUserInfo(new GetUserInfoHandler() {
+            @Override
+            public void studentExists(Student student) {
+                getStudentNotes(student, handler);
+            }
+
+            @Override
+            public void studentDoesNotExists() {
+                handler.notesNotExist();
+            }
+        });
+    }
+
     public void getTimeTable(final GetTimeTableHandler<List<Feed>> handler){
         getUserInfo(new GetUserInfoHandler() {
             @Override
             public void studentExists(Student student) {
-                getTimeTable(student, new GetTimeTableHandler<List<Feed>>() {
-                    @Override
-                    public void timetableExists(List<Feed> timetable) {
-                        handler.timetableExists(timetable);
-                    }
-
-                    @Override
-                    public void timetableDoesNotExists() {
-                        handler.timetableDoesNotExists();
-                    }
-                });
+                getTimeTable(student, handler);
             }
 
             @Override
@@ -287,6 +296,29 @@ public final class BackendService {
                     handler.timetableExists(timetable);
                 }else{
                     handler.timetableDoesNotExists();
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void getStudentNotes(Student student, final GetStudentNotesHandler<List<Semester>> handler){
+        final String[]tokens = student.getEmail().split("@");
+        notesRef.child("/"+student.getCourse()+"/"+student.getBranch()+"/"+student.getLevel()+"/"+tokens[0]).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                if(dataSnapshot.getValue() != null){
+                    List<Semester> semesters = new ArrayList<>();
+                    for(DataSnapshot semester : dataSnapshot.getChildren()){
+                        semesters.add(new Semester(semester.getKey(), semester.getValue(Semester.class).getNotes()));
+                    }
+                    handler.notesAvailable(semesters);
+                }else{
+                    handler.notesNotExist();
                 }
             }
 

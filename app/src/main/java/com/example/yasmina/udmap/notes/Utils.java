@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap.note;
+package com.example.yasmina.udmap.notes;
 
 import android.content.Context;
 import android.content.res.AssetManager;
@@ -22,14 +22,14 @@ public class Utils {
 
     private static final String TAG = "Utils";
 
-    public static List<Feed> loadFeeds(Context context){
+    public static List<Semester> loadFeeds(Context context){
         try{
             GsonBuilder builder = new GsonBuilder();
             Gson gson = builder.create();
             JSONArray array = new JSONArray(loadJSONFromAsset(context, "news.json"));
-            List<Feed> feedList = new ArrayList<>();
+            List<Semester> feedList = new ArrayList<>();
             for(int i=0;i<array.length();i++){
-                Feed feed = gson.fromJson(array.getString(i), Feed.class);
+                Semester feed = gson.fromJson(array.getString(i), Semester.class);
                 feedList.add(feed);
             }
             return feedList;

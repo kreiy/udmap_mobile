@@ -126,7 +126,7 @@
         </intent-filter>
       </activity>
 
-        <activity android:name="com.example.yasmina.udmap.note.NoteActivity">
+        <activity android:name="com.example.yasmina.udmap.notes.NotesActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.NoteActivity" />
 
