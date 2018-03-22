@@ -32,8 +32,15 @@ public class ListItemActivity3 extends AppCompatActivity {
     private Orientation mOrientation;
     private boolean mWithLinePadding;
     private ProgressBar progressBar;
-    @BindView(R.id.verticalTimeLineButton)
-    Button mVerticalTimeLineButton;
+    @BindView(R.id.btn1)
+    Button mbtn1;
+    @BindView(R.id.btn2)
+    Button mbtn2;
+    @BindView(R.id.btn3)
+    Button mbtn3;
+    @BindView(R.id.btn4)
+    Button mbtn4;
+
    /* @BindView(R.id.verticalTimeLineButtonWPadding)
     Button mVerticalTimeLineButtonWPadding;
     @BindView(R.id.horizontalTimeLineButton)
@@ -65,34 +72,35 @@ public class ListItemActivity3 extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-        mVerticalTimeLineButton.setOnClickListener(new View.OnClickListener() {
+        mbtn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onButtonClick(Orientation.VERTICAL, false);
-
             }
         });
 
-       /* mHorizontalTimeLineButton.setOnClickListener(new View.OnClickListener() {
+        mbtn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onButtonClick(Orientation.HORIZONTAL, false);
             }
         });
 
-        mVerticalTimeLineButtonWPadding.setOnClickListener(new View.OnClickListener() {
+        mbtn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onButtonClick(Orientation.VERTICAL, true);
             }
         });
 
-        mHorizontalTimeLineButtonWPadding.setOnClickListener(new View.OnClickListener() {
+        mbtn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 onButtonClick(Orientation.HORIZONTAL, true);
             }
-        });*/
+        });
+
+
 
     }
 

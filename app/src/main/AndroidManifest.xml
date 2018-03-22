@@ -126,12 +126,20 @@
             </intent-filter>
         </activity>
         <activity android:name="com.example.yasmina.udmap.ActivityChat">
-        <intent-filter>
+         <intent-filter>
             <action android:name="com.example.yasmina.udmapp.ActivityChat" />
 
             <category android:name="android.intent.category.DEFAULT" />
         </intent-filter>
-    </activity>
+      </activity>
+
+        <activity android:name="com.example.yasmina.udmap.note.NoteActivity">
+            <intent-filter>
+                <action android:name="com.example.yasmina.udmapp.NoteActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
 
         <activity
