@@ -22,6 +22,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.yasmina.udmap.login.LoginActivity;
 import com.example.yasmina.udmap.news.NewsMenuActivity;
 import com.example.yasmina.udmap.settings.SettingsActivity;
 import com.example.yasmina.udmap.note.NoteActivity;
@@ -66,7 +67,7 @@ public class Menu extends AppCompatActivity {
 
     String [] itemsValue = new String[]{"emploi du temps","gestion des notes","actualites","chat","contact",};
     int[] listviewImage = new int[]{
-            R.drawable.cours, R.drawable.note, R.drawable.news,R.drawable.map, R.drawable.coord
+            R.drawable.cours, R.drawable.note, R.drawable.news,R.drawable.splash_icon, R.drawable.coord
     };
 
     String[] listviewShortDescription = new String[]{"Rendez vous sur la plateforme pour consulter votre emploi du temps","Retrouvez les informations sur votre note ","Retrouvez les informations qui sont a l'une pour l'Universite","Retrouvez les adresses de l'UDM","Retrouver les informations les coordonnees des personnes de l'UDM",
@@ -418,7 +419,9 @@ public class Menu extends AppCompatActivity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
+
+           // Toast.makeText(getApplicationContext(), "Logout user!", Toast.LENGTH_LONG).show();
+            startActivity(new Intent(Menu.this, LoginActivity.class));
             return true;
         }
 
