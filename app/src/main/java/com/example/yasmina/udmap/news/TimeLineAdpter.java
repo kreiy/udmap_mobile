@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap;
+package com.example.yasmina.udmap.news;
 
 /**
  * Created by yasmina on 12/03/18.
@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.yasmina.udmap.R;
 import com.example.yasmina.udmap.model.Orientation;
 import com.example.yasmina.udmap.model.TimeLineModel;
 import com.example.yasmina.udmap.utils.DateTimeUtils;

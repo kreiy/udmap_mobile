@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap;
+package com.example.yasmina.udmap.news;
 
 /**
  * Created by yasmina on 12/03/18.
@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.widget.TextView;
 
+import com.example.yasmina.udmap.R;
 import com.github.vipulasri.timelineview.TimelineView;
 
 import butterknife.BindView;

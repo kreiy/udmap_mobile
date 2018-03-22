@@ -11,7 +11,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.example.yasmina.udmap.ListItemActivity3;
+import com.example.yasmina.udmap.news.NewsMenuActivity;
 import com.example.yasmina.udmap.R;
 import com.example.yasmina.udmap.backend.BackendService;
 import com.example.yasmina.udmap.model.Orientation;
@@ -38,8 +38,8 @@ public class EmploiDuTempsActivity extends AppCompatActivity {
         // mToolbar.setTitle(getString(R.string.Horaire));
 
          setSupportActionBar(mToolbar);
-        mOrientation = (Orientation) getIntent().getSerializableExtra(ListItemActivity3.EXTRA_ORIENTATION);
-        mWithLinePadding = getIntent().getBooleanExtra(ListItemActivity3.EXTRA_WITH_LINE_PADDING, false);
+        mOrientation = (Orientation) getIntent().getSerializableExtra(NewsMenuActivity.CATEGORY);
+        mWithLinePadding = getIntent().getBooleanExtra(NewsMenuActivity.EXTRA_WITH_LINE_PADDING, false);
 
         if(getSupportActionBar()!=null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
@@ -97,15 +97,15 @@ public class EmploiDuTempsActivity extends AppCompatActivity {
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
         if(mOrientation!=null)
-            savedInstanceState.putSerializable(ListItemActivity3.EXTRA_ORIENTATION, mOrientation);
+            savedInstanceState.putSerializable(NewsMenuActivity.CATEGORY, mOrientation);
         super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            if (savedInstanceState.containsKey(ListItemActivity3.EXTRA_ORIENTATION)) {
-                mOrientation = (Orientation) savedInstanceState.getSerializable(ListItemActivity3.EXTRA_ORIENTATION);
+            if (savedInstanceState.containsKey(NewsMenuActivity.CATEGORY)) {
+                mOrientation = (Orientation) savedInstanceState.getSerializable(NewsMenuActivity.CATEGORY);
             }
         }
         super.onRestoreInstanceState(savedInstanceState);

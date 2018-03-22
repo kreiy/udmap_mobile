@@ -4,6 +4,8 @@ import android.support.annotation.NonNull;
 
 import com.example.yasmina.udmap.login.SingInHandler;
 import com.example.yasmina.udmap.model.TimeLineModel;
+import com.example.yasmina.udmap.news.NewsHandler;
+import com.example.yasmina.udmap.news.Category;
 import com.example.yasmina.udmap.signup.CheckStudentHandler;
 import com.example.yasmina.udmap.signup.RegistrationHandler;
 import com.example.yasmina.udmap.signup.Student;
@@ -11,7 +13,6 @@ import com.example.yasmina.udmap.signup.UserInfo;
 import com.example.yasmina.udmap.timetable.Feed;
 import com.example.yasmina.udmap.timetable.GetUserInfoHandler;
 import com.example.yasmina.udmap.timetable.GetTimeTableHandler;
-import com.example.yasmina.udmap.timetable.Info;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -34,13 +35,13 @@ public final class BackendService {
     private static final BackendService ourInstance = new BackendService();
 
     private static final DatabaseReference database = FirebaseDatabase.getInstance().getReference().child("/2018");
-    private static final DatabaseReference generalNewsDatabaseRef;
+    private static final DatabaseReference newsDatabaseRef;
     private static final DatabaseReference studentsRef;
     private static final DatabaseReference timetableRef;
     private static final   FirebaseAuth auth = FirebaseAuth.getInstance();
 
     static {
-        generalNewsDatabaseRef = database.child("/news/general");
+        newsDatabaseRef = database.child("/news");
         studentsRef = database.child("/students");
         timetableRef = database.child("/timetables");
     }
@@ -52,23 +53,28 @@ public final class BackendService {
     }
 
 
-    public void getGeneralTimelineNews(final CallbackHandler<List<TimeLineModel>> handler){
-        generalNewsDatabaseRef.addValueEventListener(new ValueEventListener() {
+    public void getNews(final Category category, final NewsHandler<List<TimeLineModel>> handler){
 
-           final List<TimeLineModel> generalTimelineNews = new ArrayList<>();
-
+        getUserInfo(new GetUserInfoHandler() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                generalTimelineNews.clear();
-                for(DataSnapshot child : dataSnapshot.getChildren()) {
-                    generalTimelineNews.add(child.getValue(TimeLineModel.class));
+            public void studentExists(Student student) {
+                switch (category){
+                    case DEPARTEMENT: getDepartementNews(student, handler);
+                    break;
+
+                    case FILIERE: getFiliereNews(student, handler);
+                    break;
+
+                    case CLASSE: getClasseNews(student, handler);
+                    break;
+
+                    default: getGeneralNews(handler);
                 }
-                handler.onData(generalTimelineNews);
             }
 
             @Override
-            public void onCancelled(DatabaseError databaseError) {
-                handler.onError("and error occured");
+            public void studentDoesNotExists() {
+
             }
         });
     }
@@ -130,6 +136,92 @@ public final class BackendService {
     }
 
     //UTILS
+
+    private void getGeneralNews(final NewsHandler<List<TimeLineModel>> handler){
+        newsDatabaseRef.child("/general").addValueEventListener(new ValueEventListener() {
+
+            final List<TimeLineModel> generalTimelineNews = new ArrayList<>();
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                generalTimelineNews.clear();
+                for(DataSnapshot child : dataSnapshot.getChildren()) {
+                    generalTimelineNews.add(child.getValue(TimeLineModel.class));
+                }
+                handler.onData(generalTimelineNews);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                handler.onError("and error occured");
+            }
+        });
+    }
+
+    private void getDepartementNews(final Student student, final NewsHandler<List<TimeLineModel>> handler){
+        newsDatabaseRef.child("/courses/"+student.getCourse()+"/general").addValueEventListener(new ValueEventListener() {
+
+            final List<TimeLineModel> generalTimelineNews = new ArrayList<>();
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                generalTimelineNews.clear();
+                for(DataSnapshot child : dataSnapshot.getChildren()) {
+                    generalTimelineNews.add(child.getValue(TimeLineModel.class));
+                }
+                handler.onData(generalTimelineNews);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                handler.onError("and error occured");
+            }
+        });
+    }
+
+    private void getFiliereNews(final Student student, final NewsHandler<List<TimeLineModel>> handler){
+        newsDatabaseRef.child("/courses/"+student.getCourse()+"/branches/"+student.getBranch()+"/general").addValueEventListener(new ValueEventListener() {
+
+            final List<TimeLineModel> generalTimelineNews = new ArrayList<>();
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                generalTimelineNews.clear();
+                for(DataSnapshot child : dataSnapshot.getChildren()) {
+                    generalTimelineNews.add(child.getValue(TimeLineModel.class));
+                }
+                handler.onData(generalTimelineNews);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                handler.onError("and error occured");
+            }
+        });
+    }
+
+    private void getClasseNews(final Student student, final NewsHandler<List<TimeLineModel>> handler){
+        newsDatabaseRef.child("/courses/"+student.getCourse()+"/branches/"+student.getBranch()+"/levels/"+student.getLevel()).addValueEventListener(new ValueEventListener() {
+
+            final List<TimeLineModel> generalTimelineNews = new ArrayList<>();
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                generalTimelineNews.clear();
+                for(DataSnapshot child : dataSnapshot.getChildren()) {
+                    generalTimelineNews.add(child.getValue(TimeLineModel.class));
+                }
+                handler.onData(generalTimelineNews);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                handler.onError("and error occured");
+            }
+        });
+    }
+
+
     private void checkStudentIsListed(final UserInfo user, final CheckStudentHandler handler){
         final String[] tokens = user.getEmail().split("@");
         studentsRef.child(tokens[0]).addListenerForSingleValueEvent(new ValueEventListener() {

@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap;
+package com.example.yasmina.udmap.news;
 
 /**
  * Created by yasmina on 12/03/18.
@@ -11,15 +11,10 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.example.yasmina.udmap.R;
 import com.example.yasmina.udmap.backend.BackendService;
-import com.example.yasmina.udmap.backend.CallbackHandler;
 import com.example.yasmina.udmap.model.Orientation;
 import com.example.yasmina.udmap.model.TimeLineModel;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.ValueEventListener;
 
 
 import java.util.ArrayList;
@@ -33,7 +28,7 @@ public class TimeLineActivity extends AppCompatActivity {
     private RecyclerView mRecyclerView;
     private TimeLineAdpter mTimeLineAdapter;
     private List<TimeLineModel> mDataList = new ArrayList<>();
-    private Orientation mOrientation;
+    private Category category;
     private boolean mWithLinePadding;
     private BackendService backendService;
 
@@ -51,16 +46,16 @@ public class TimeLineActivity extends AppCompatActivity {
         if(getSupportActionBar()!=null)
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
-        mOrientation = (Orientation) getIntent().getSerializableExtra(ListItemActivity3.EXTRA_ORIENTATION);
-        mWithLinePadding = getIntent().getBooleanExtra(ListItemActivity3.EXTRA_WITH_LINE_PADDING, false);
+        category = (Category) getIntent().getSerializableExtra(NewsMenuActivity.CATEGORY);
+        mWithLinePadding = getIntent().getBooleanExtra(NewsMenuActivity.EXTRA_WITH_LINE_PADDING, false);
 
-        setTitle(mOrientation == Orientation.HORIZONTAL ? getResources().getString(R.string.horizontal_timeline) : getResources().getString(R.string.vertical_timeline));
+        setTitle(category.name());
 
         mRecyclerView = (RecyclerView) findViewById(R.id.recyclerView);
-        mRecyclerView.setLayoutManager(getLinearLayoutManager());
+        mRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         mRecyclerView.setHasFixedSize(true);
 
-        backendService.getGeneralTimelineNews(new CallbackHandler<List<TimeLineModel>>() {
+        backendService.getNews(category, new NewsHandler<List<TimeLineModel>>() {
             @Override
             public void onData(List<TimeLineModel> data) {
                 for(TimeLineModel news : data){
@@ -78,16 +73,8 @@ public class TimeLineActivity extends AppCompatActivity {
         initView();
     }
 
-    private LinearLayoutManager getLinearLayoutManager() {
-        if (mOrientation == Orientation.HORIZONTAL) {
-            return new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
-        } else {
-            return new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
-        }
-    }
-
     private void initView() {
-        mTimeLineAdapter = new TimeLineAdpter(mDataList, mOrientation, mWithLinePadding);
+        mTimeLineAdapter = new TimeLineAdpter(mDataList, Orientation.VERTICAL, mWithLinePadding);
         mRecyclerView.setAdapter(mTimeLineAdapter);
     }
 
@@ -105,16 +92,16 @@ public class TimeLineActivity extends AppCompatActivity {
 
     @Override
     protected void onSaveInstanceState(Bundle savedInstanceState) {
-        if(mOrientation!=null)
-            savedInstanceState.putSerializable(ListItemActivity3.EXTRA_ORIENTATION, mOrientation);
+        if(category !=null)
+            savedInstanceState.putSerializable(NewsMenuActivity.CATEGORY, category);
         super.onSaveInstanceState(savedInstanceState);
     }
 
     @Override
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         if (savedInstanceState != null) {
-            if (savedInstanceState.containsKey(ListItemActivity3.EXTRA_ORIENTATION)) {
-                mOrientation = (Orientation) savedInstanceState.getSerializable(ListItemActivity3.EXTRA_ORIENTATION);
+            if (savedInstanceState.containsKey(NewsMenuActivity.CATEGORY)) {
+                category = (Category) savedInstanceState.getSerializable(NewsMenuActivity.CATEGORY);
             }
         }
         super.onRestoreInstanceState(savedInstanceState);
