@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import com.example.yasmina.udmap.R;
 
-public class NoteActivity extends AppCompatActivity implements View.OnClickListener {
+public class NoteActivity extends AppCompatActivity {
 
     String matieres[] = {"BD", "PM", "IN","Maths", "DP"};
     String notes[] = {"18","17","10","12","11"};
@@ -43,7 +43,6 @@ public class NoteActivity extends AppCompatActivity implements View.OnClickListe
         tv.setTypeface(Typeface.DEFAULT, typeface);
         tv.setBackgroundColor(bgColor);
         tv.setLayoutParams(getLayoutParams());
-        tv.setOnClickListener(this);
         return tv;
     }
 
@@ -87,16 +86,6 @@ public class NoteActivity extends AppCompatActivity implements View.OnClickListe
             tr.addView(getTextView(i + 1, matieres[i], Color.WHITE, Typeface.NORMAL, ContextCompat.getColor(this, R.color.colorAccent)));
             tr.addView(getTextView(i + numCompanies, notes[i], Color.WHITE, Typeface.NORMAL, ContextCompat.getColor(this, R.color.colorAccent)));
             tl.addView(tr, getTblLayoutParams());
-        }
-    }
-
-    @Override
-    public void onClick(View v) {
-        int id = v.getId();
-        TextView tv = findViewById(id);
-        if (null != tv) {
-            Log.i("onClick", "Clicked on row :: " + id);
-            Toast.makeText(this, "Clicked on row :: " + id + ", Text :: " + tv.getText(), Toast.LENGTH_SHORT).show();
         }
     }
 }
