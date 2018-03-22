@@ -69,7 +69,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.yasmina.udmap.ListItemActivity3">
+        <activity android:name="com.example.yasmina.udmap.news.NewsMenuActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.ListItemActivity3" />
 
@@ -90,7 +90,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name=".TimeLineActivity">
+        <activity android:name=".news.TimeLineActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.TimeLineActivity" />
 

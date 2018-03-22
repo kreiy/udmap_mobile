@@ -11,6 +11,7 @@ public class Student {
     private String level;
     private String course;
     private String branch;
+    private String campus;
 
     public String getFirstname() {
         return firstname;
@@ -58,5 +59,13 @@ public class Student {
 
     public void setBranch(String branch) {
         this.branch = branch;
+    }
+
+    public String getCampus() {
+        return campus;
+    }
+
+    public void setCampus(String campus) {
+        this.campus = campus;
     }
 }

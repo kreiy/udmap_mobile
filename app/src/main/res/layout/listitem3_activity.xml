@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:fitsSystemWindows="true"
     android:background="@color/colorAccent"
-    tools:context="com.example.yasmina.udmap.ListItemActivity3">
+    tools:context="com.example.yasmina.udmap.news.NewsMenuActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"

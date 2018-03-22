@@ -8,7 +8,7 @@
     android:paddingLeft="20dp"
     android:paddingRight="20dp"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.yasmina.udmap.ListItemActivity3"
+    tools:context="com.example.yasmina.udmap.news.NewsMenuActivity"
     tools:showIn="@layout/activity_main">
 
 
@@ -17,7 +17,7 @@
         android:layout_height="60dp"
         android:id="@+id/btn1"
         android:layout_marginTop="30dp"
-        android:text="actualites generales"
+        android:text="actualites generales de l'université"
         android:textSize="16sp"
         android:textAllCaps="false" />
 
@@ -26,7 +26,7 @@
         android:layout_height="60dp"
         android:id="@+id/btn2"
         android:layout_marginTop="10dp"
-        android:text="actualites par departement"
+        android:text="actualites du département"
         android:textSize="16sp"
         android:textAllCaps="false"/>
 
@@ -36,7 +36,7 @@
         android:id="@+id/btn3"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="actualites par filieres"
+        android:text="actualites de la filière"
         android:textSize="16sp"
         android:textAllCaps="false" />
 
@@ -46,7 +46,7 @@
         android:id="@+id/btn4"
         android:layout_marginTop="10dp"
         android:gravity="center"
-        android:text="actualite par classe"
+        android:text="actualite de la classe"
         android:textSize="16sp"
         android:textAllCaps="false"/>
 
