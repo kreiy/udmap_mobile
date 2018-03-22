@@ -43,7 +43,7 @@ public class MainActivityChat extends AppCompatActivity {
                     SIGN_IN_REQUEST_CODE
             );
         } else {
-            // User is already signed in. Therefore, display
+            // UserInfo is already signed in. Therefore, display
             // a welcome Toast
             Toast.makeText(this,
                     "Welcome " + FirebaseAuth.getInstance()

@@ -24,6 +24,7 @@ import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
 import com.example.yasmina.udmap.settings.SettingsActivity;
 import com.example.yasmina.udmap.note.NoteActivity;
+import com.example.yasmina.udmap.timetable.EmploiDuTempsActivity;
 
 
 import java.util.ArrayList;
@@ -139,7 +140,7 @@ public class Menu extends AppCompatActivity {
                                     int position, long id){
 
                 if (position == 0) {
-                    Intent myIntent = new Intent(view.getContext(),EmploiDuTemps.class);
+                    Intent myIntent = new Intent(view.getContext(),EmploiDuTempsActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
 

@@ -11,6 +11,8 @@ import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.example.yasmina.udmap.login.LoginActivity;
+
 public class SplashScreenActivity extends Activity {
 
 

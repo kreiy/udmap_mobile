@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap;
+package com.example.yasmina.udmap.timetable;
 
 /**
  * Created by yasmina on 14/03/18.
@@ -11,19 +11,26 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.example.yasmina.udmap.ListItemActivity3;
+import com.example.yasmina.udmap.R;
+import com.example.yasmina.udmap.backend.BackendService;
 import com.example.yasmina.udmap.model.Orientation;
 import com.mindorks.placeholderview.ExpandablePlaceHolderView;
 
-public class EmploiDuTemps extends AppCompatActivity {
+import java.util.List;
+
+public class EmploiDuTempsActivity extends AppCompatActivity {
 
     private ExpandablePlaceHolderView mExpandableView;
     private Context mContext;
     private Orientation mOrientation;
     private boolean mWithLinePadding;
+    private BackendService backendService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        backendService = BackendService.getInstance();
         setContentView(R.layout.emploi_du_temps);
         mContext = this.getApplicationContext();
 
@@ -42,12 +49,25 @@ public class EmploiDuTemps extends AppCompatActivity {
 
 
         mExpandableView = (ExpandablePlaceHolderView) findViewById(R.id.expandableView);
-        for (Feed feed : Utils.loadFeeds(this.getApplicationContext())) {
-            mExpandableView.addView(new HeadingView(mContext, feed.getHeading()));
-            for (Info info : feed.getInfoList()) {
-                mExpandableView.addView(new InfoView(mContext, info));
+
+        backendService.getTimeTable(new GetTimeTableHandler<List<Feed>>() {
+            @Override
+            public void timetableExists(final List<Feed> timetable) {
+
+                for (Feed feed : timetable) {
+                    mExpandableView.addView(new HeadingView(mContext, feed.getHeading()));
+                    for (Info info : feed.getInfoList()) {
+                        mExpandableView.addView(new InfoView(mContext, info));
+                        mExpandableView.destroyDrawingCache();
+                    }
+                }
             }
-        }
+
+            @Override
+            public void timetableDoesNotExists() {
+
+            }
+        });
     }
 
 
