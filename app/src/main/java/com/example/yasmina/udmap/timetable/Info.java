@@ -1,4 +1,4 @@
-package com.example.yasmina.udmap;
+package com.example.yasmina.udmap.timetable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

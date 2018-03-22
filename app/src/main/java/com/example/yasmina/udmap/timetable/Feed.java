@@ -1,8 +1,6 @@
-package com.example.yasmina.udmap;
+package com.example.yasmina.udmap.timetable;
 
-import com.google.gson.annotations.Expose;
-import com.google.gson.annotations.SerializedName;
-
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -11,13 +9,17 @@ import java.util.List;
 
 public class Feed {
 
-    @SerializedName("category")
-    @Expose
     private String heading;
 
-    @SerializedName("data")
-    @Expose
+
     private List<Info> infoList;
+
+    public Feed(){}
+
+    public  Feed(String heading, List<Info> infoList){
+        this.heading = heading;
+        this.infoList = infoList;
+    }
 
     public String getHeading() {
         return heading;

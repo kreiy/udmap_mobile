@@ -104,7 +104,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
-        <activity android:name="com.example.yasmina.udmap.EmploiDuTemps">
+        <activity android:name="com.example.yasmina.udmap.timetable.EmploiDuTempsActivity">
             <intent-filter>
                 <action android:name="com.example.yasmina.udmapp.EmploiDuTemps" />
 

@@ -1,10 +1,11 @@
-package com.example.yasmina.udmap;
+package com.example.yasmina.udmap.timetable;
 
 import android.content.Context;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
+import com.example.yasmina.udmap.R;
+
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;
@@ -49,6 +50,5 @@ public class InfoView {
         titleTxt.setText(mInfo.getTitle());
         captionTxt.setText(mInfo.getCaption());
         timeTxt.setText(mInfo.getTime());
-        //Glide.with(mContext).load(mInfo.getImageUrl()).into(imageView);
     }
 }

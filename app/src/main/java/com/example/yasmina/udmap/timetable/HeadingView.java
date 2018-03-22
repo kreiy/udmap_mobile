@@ -1,10 +1,11 @@
-package com.example.yasmina.udmap;
+package com.example.yasmina.udmap.timetable;
 
 import android.content.Context;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.example.yasmina.udmap.R;
 import com.mindorks.placeholderview.annotations.Layout;
 import com.mindorks.placeholderview.annotations.Resolve;
 import com.mindorks.placeholderview.annotations.View;

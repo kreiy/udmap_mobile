@@ -11,6 +11,10 @@ public class UserInfo {
     private String prenom;
     private String nom;
 
+    public UserInfo(String email){
+        this.email = email;
+    }
+
     public UserInfo(String email, String password){
         this.email = email;
         this.password = password;

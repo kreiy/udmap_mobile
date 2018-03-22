@@ -3,12 +3,12 @@ package com.example.yasmina.udmap;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.Toolbar;
-import android.view.MenuItem;
-import android.widget.TableLayout;
 
-import com.example.yasmina.udmap.model.Orientation;
+import com.example.yasmina.udmap.timetable.Feed;
+import com.example.yasmina.udmap.timetable.HeadingView;
+import com.example.yasmina.udmap.timetable.Info;
+import com.example.yasmina.udmap.timetable.InfoView;
+import com.example.yasmina.udmap.timetable.Utils;
 import com.mindorks.placeholderview.ExpandablePlaceHolderView;
 
 
