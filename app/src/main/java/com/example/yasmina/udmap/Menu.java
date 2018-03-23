@@ -1,5 +1,7 @@
 package com.example.yasmina.udmap;
 
+import android.app.NotificationManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -7,6 +9,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -22,11 +25,18 @@ import android.widget.TextView;
 import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.example.yasmina.udmap.backend.BackendService;
 import com.example.yasmina.udmap.login.LoginActivity;
 import com.example.yasmina.udmap.news.NewsMenuActivity;
 import com.example.yasmina.udmap.settings.SettingsActivity;
 import com.example.yasmina.udmap.notes.NotesActivity;
 import com.example.yasmina.udmap.timetable.EmploiDuTempsActivity;
+import com.example.yasmina.udmap.utils.NotificationsService;
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.util.ArrayList;
@@ -35,6 +45,7 @@ import java.util.List;
 
 public class Menu extends AppCompatActivity {
 
+    private NotificationsService notificationsService = NotificationsService.getInstance();
     private NavigationView navigationView;
     private DrawerLayout drawer;
     private View navHeader;
@@ -74,10 +85,15 @@ public class Menu extends AppCompatActivity {
     };
 
 
+    private void sendNotification(){
+        Toast.makeText(Menu.this, "child modified", Toast.LENGTH_SHORT).show();
+
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        notificationsService.constructNotificationHandlers(Menu.this);
         setContentView(R.layout.activity_main);
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -97,14 +113,6 @@ public class Menu extends AppCompatActivity {
 
         // load toolbar titles from string resources
         activityTitles = getResources().getStringArray(R.array.nav_item_activity_titles);
-
-        /*fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });*/
 
         // load nav menu header data
         loadNavHeader();
